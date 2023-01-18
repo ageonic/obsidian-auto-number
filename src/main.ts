@@ -1,8 +1,13 @@
 import { Notice, Plugin } from 'obsidian';
+import AutoNumberApi from './api';
 import { AutoNumberSettings, AutoNumberSettingsTab, DEFAULT_SETTINGS } from './settings';
 
 export default class AutoNumber extends Plugin {
 	settings: AutoNumberSettings;
+
+	get api(): AutoNumberApi {
+		return new AutoNumberApi(this);
+	}
 
 	async onload() {
 		this.loadSettings();
