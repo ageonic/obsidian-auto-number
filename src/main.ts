@@ -1,11 +1,12 @@
 import { Notice, Plugin } from 'obsidian';
-import { AutoNumberSettings, DEFAULT_SETTINGS } from './settings';
+import { AutoNumberSettings, AutoNumberSettingsTab, DEFAULT_SETTINGS } from './settings';
 
 export default class AutoNumber extends Plugin {
 	settings: AutoNumberSettings;
 
 	async onload() {
 		this.loadSettings();
+		this.addSettingTab(new AutoNumberSettingsTab(this.app, this));
 		
 		new Notice("Loaded!");
 	}
